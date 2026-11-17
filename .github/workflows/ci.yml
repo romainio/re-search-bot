@@ -1,0 +1,22 @@
+name: CI
+
+# Contrôle des changements : format et lint (Biome), typage et tests. Aucun secret, aucun déploiement (le déploiement se fait par Workers Builds, docs/playbook.md).
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - run: npx biome ci .
+      - run: npm run typecheck
+      - run: npm test
+      # Mesures de CPU à part, un fichier à la fois : en parallèle, les autres fichiers faussent les chronos.
+      - run: npm run test:cpu

@@ -1,0 +1,45 @@
+// RE-SEARCH : aucun identifiant de compte ni de ressource. La base D1 est créée au premier déploiement (binding sans database_id,
+// wrangler 4.45 ou plus) et migrée par le Worker lui-même (src/migrate.ts). Réglages : instance.config.json ; secrets
+// (TELEGRAM_BOT_TOKEN, ADMIN_KEY) : `wrangler secret put` ou le tableau de bord Cloudflare.
+{
+  "name": "re-search",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-10-15",
+  // Le Worker appelle ses routes internes (/part, /embed) par ctx.exports.default, chaque appel étant une invocation séparée avec
+  // ses propres 10 ms de CPU, sans service binding vers lui-même. Déclaré pour ne pas dépendre de la date de compatibilité.
+  "compatibility_flags": ["enable_ctx_exports"],
+  // Migrations D1 (migrations/*.sql) : importées comme texte dans le bundle (src/migrations.ts), appliquées par src/migrate.ts.
+  "rules": [{ "type": "Text", "globs": ["migrations/*.sql"], "fallthrough": true }],
+  // Chaque minute de 7h à 18h59 UTC (fenêtre de lecture filtrée dans le code, et le résumé du soir l'été) ; « 5-59 19 » : le
+  // résumé du soir l'hiver. Un seul cron pour les deux voies de lecture : Cloudflare fusionne deux crons équivalents.
+  "triggers": { "crons": ["* 7-18 * * *", "5-59 19 * * *"] },
+  "observability": { "enabled": true },
+  "ai": { "binding": "AI" },
+  // Base D1 : sans database_id ni database_name, wrangler la crée et la lie au déploiement.
+  "d1_databases": [{ "binding": "DB" }],
+  // Recherche sémantique (docs/recherche-semantique.md) : pas de binding Vectorize par défaut (un binding vers un index inexistant fait
+  // échouer le déploiement). Pour l'activer : créer l'index (npx wrangler vectorize create re-search-annonces --dimensions=1024
+  // --metric=cosine, puis ses index de métadonnées zone (string) et gone (number)), ajouter ici
+  //   "vectorize": [{ "binding": "VECTORIZE", "index_name": "re-search-annonces" }],
+  // et passer SEMANTIC_SEARCH à "true".
+  //
+  // Interrupteurs des fonctions (FEATURE_SWITCHES, src/config/switches.ts ; défauts et leur règle : docs/fonctions.md). Allumées :
+  // fonctions éprouvées qui n'exigent que D1 et Workers AI. DASHBOARD_PUBLIC "false" : le tableau de bord exige ?k=ADMIN_KEY, puis
+  // un cookie ; "true" : public.
+  "vars": {
+    "PHOTO_SCORING": "true",
+    "GEO_HINTS": "true",
+    "MARKET_HINTS": "true",
+    "TELEGRAM_INTERACTIVE": "true",
+    "ASSISTANT_ENABLED": "true",
+    "UNIVERSAL_READER": "true",
+    "SEMANTIC_SEARCH": "false",
+    "PROSPECT_ENABLED": "false",
+    "PROSPECT_AI": "false",
+    "BROWSER_RENDER": "false",
+    "MAIL_INGEST": "false",
+    "WHATSAPP_ENABLED": "false",
+    "MCP_ENABLED": "true",
+    "DASHBOARD_PUBLIC": "false"
+  }
+}

@@ -1,0 +1,5 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Faille de sécurité · Security vulnerability
+    url: https://github.com/romainio/re-search-bot/security/advisories/new
+    about: Signalement privé, jamais en issue publique · Private report, never a public issue (.github/SECURITY.md)

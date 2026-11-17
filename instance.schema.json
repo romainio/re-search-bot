@@ -1,0 +1,328 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "instance.schema.json",
+  "title": "Instance RE-SEARCH",
+  "description": "Configuration d'une instance : zones surveillées, critères, fenêtre horaire et liste des sources. Validée à l'exécution par src/instance.ts (mêmes règles, erreurs détaillées) ; ce schéma sert d'aide à l'écriture (éditeur, assistant). Sans zone, l'instance n'est pas encore paramétrée : elle ne lit rien.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["zones", "sources"],
+  "if": { "properties": { "zones": { "minItems": 1 } } },
+  "then": { "required": ["criteria"] },
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "zones": {
+      "description": "Zones surveillées. Une annonce hors de ces codes postaux est écartée. Liste vide : instance non paramétrée (« criteria » devient alors facultatif).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["postalCode", "label"],
+        "properties": {
+          "postalCode": {
+            "type": "string",
+            "pattern": "^\\d{5}$",
+            "description": "Code postal à 5 chiffres (unique)."
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Libellé court (alerte, tableau de bord)."
+          },
+          "town": {
+            "type": "string",
+            "description": "Expression régulière (insensible à la casse) du nom de la commune, pour reconnaître une annonce sans code postal. Ex. : \"\\\\blevallois\\\\b\"."
+          },
+          "bbox": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            },
+            "minItems": 4,
+            "maxItems": 4,
+            "description": "Emprise [sud, ouest, nord, est] en degrés (prospection des agences, OpenStreetMap)."
+          }
+        }
+      }
+    },
+    "outOfZoneTowns": {
+      "description": "Communes voisines hors zones, reconnues sans code postal : leur annonce est écartée (« localisation »). Les noms composés avant leur nom court.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["postalCode", "town"],
+        "properties": {
+          "postalCode": {
+            "type": "string",
+            "pattern": "^\\d{5}$"
+          },
+          "town": {
+            "type": "string",
+            "description": "Expression régulière (insensible à la casse). Un nom composé qui désigne un lieu des zones (quartier qui porte le nom de la commune voisine) s'écarte par des assertions (?<!...) et (?!...) : voir examples/paris-17-levallois.json."
+          }
+        }
+      }
+    },
+    "neighborhoodKeywords": {
+      "description": "Mots-clés de quartier : simple repère dans l'alerte, jamais un filtre.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "neighborhoodLabel": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Nom affiché du quartier repéré par neighborhoodKeywords (« Batignolles », « Croix-Rousse ») : badge de l'alerte et filtre du tableau de bord. Défaut : « Quartier »."
+    },
+    "keywordsZone": {
+      "type": "string",
+      "description": "Code postal de la zone où s'appliquent les mots-clés (défaut : la première zone)."
+    },
+    "criteria": {
+      "description": "Critères de filtre communs à toutes les zones. Une valeur inconnue dans l'annonce (surface, pièces) ne l'écarte jamais.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rentMax"],
+      "properties": {
+        "rentMin": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Loyer charges comprises minimal (€/mois, inclus). Défaut 0."
+        },
+        "rentMax": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Loyer charges comprises maximal (€/mois, inclus)."
+        },
+        "surfaceMin": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Surface minimale en m² (incluse). Défaut 0."
+        },
+        "roomsMin": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Pièces minimales (incluses). Défaut 0."
+        },
+        "excludeGroundFloor": {
+          "type": "boolean",
+          "description": "Écarter les rez-de-chaussée. Défaut false."
+        }
+      }
+    },
+    "window": {
+      "description": "Fenêtre horaire (heure de Paris) : lecture de startHour (inclus) à endHour (exclu) ; résumé du soir à summaryHour:summaryMinute. Le cron de wrangler.jsonc est en UTC et doit la couvrir.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "startHour": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 23,
+          "default": 9
+        },
+        "endHour": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 24,
+          "default": 20
+        },
+        "summaryHour": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 23,
+          "default": 20
+        },
+        "summaryMinute": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 59,
+          "default": 5
+        }
+      }
+    },
+    "photoCriteria": {
+      "description": "Critères photo par défaut (questions posées au modèle). Absent : grille standard de 10 critères.",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "question", "emoji", "label"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "question": {
+            "type": "string",
+            "minLength": 1
+          },
+          "emoji": {
+            "type": "string",
+            "minLength": 1
+          },
+          "label": {
+            "type": "string",
+            "minLength": 1
+          },
+          "showNo": {
+            "type": "boolean",
+            "description": "Afficher aussi un « non »."
+          },
+          "parent": {
+            "type": "string",
+            "description": "Identifiant du critère auquel celui-ci est rattaché."
+          }
+        }
+      }
+    },
+    "ai": {
+      "description": "Plafonds de Workers AI en neurons par jour UTC (10 000 gratuits). Absent : 8 000 au total et les plafonds par fonction habituels.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "dailyNeurons": {
+          "type": "number",
+          "minimum": 0
+        },
+        "featureCaps": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "geo": {
+      "description": "Codes postaux couverts par les données géographiques embarquées (Île-de-France, src/data/). Absent ou vide : aucun indice de station ni d'encadrement.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "stationPostalCodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rentCapPostalCodes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sources": {
+      "description": "Registre des sources, dans l'ordre de lecture. Sans `group`, les sources actives sont réparties dans les groupes (au plus 10 par groupe, 10 groupes).",
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "name", "url", "parser", "zones"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9_]+$",
+            "description": "Identifiant unique (minuscules, chiffres, _)."
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "pattern": "^https?://"
+          },
+          "parser": {
+            "type": "string",
+            "description": "Lecteur (src/parsers/) ; « universal » : lecteur universel pour un site sans lecteur dédié.",
+            "enum": [
+              "bienici",
+              "orpi",
+              "foncia",
+              "lbi",
+              "lbi2",
+              "fnaim",
+              "nestenn",
+              "apimo",
+              "netty",
+              "laforet",
+              "century21",
+              "oralia",
+              "osl",
+              "billie",
+              "office5",
+              "at1605",
+              "caimmo",
+              "wpapimo",
+              "era",
+              "universal"
+            ]
+          },
+          "group": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9,
+            "description": "Groupe de lecture (facultatif : réparti automatiquement)."
+          },
+          "zones": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            },
+            "description": "Codes postaux (des zones de l'instance) que la source couvre."
+          },
+          "filteredToZones": {
+            "type": "boolean",
+            "default": false,
+            "description": "L'URL ne renvoie que des annonces de `zones`."
+          },
+          "phone": {
+            "type": ["string", "null"],
+            "default": null
+          },
+          "encoding": {
+            "enum": ["utf-8", "windows-1252"],
+            "default": "utf-8"
+          },
+          "stopMarker": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Marqueur de fin de liste : la lecture s'arrête au premier morceau qui le contient."
+          },
+          "every": {
+            "enum": [5, 10, 15, 20, 30, 60],
+            "description": "Cadence réduite : lue toutes les `every` minutes."
+          },
+          "maxBytes": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "active": {
+            "type": "boolean",
+            "default": true
+          },
+          "render": {
+            "const": "browser",
+            "description": "Source universelle seulement : rendu navigateur avant conversion."
+          },
+          "note": {
+            "type": "string",
+            "description": "Commentaire libre (raison d'une désactivation, particularité du site) ; ignoré par le Worker."
+          },
+          "extraPage": {
+            "type": "boolean",
+            "description": "Page de pagination (page 2 et suivantes) : une page sans annonce est un état normal, pas une panne. Ne jamais l'utiliser sur la page 1."
+          }
+        }
+      }
+    }
+  }
+}

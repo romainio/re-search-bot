@@ -1,0 +1,34 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "vcs": { "enabled": true, "clientKind": "git", "useIgnoreFile": true },
+  "files": {
+    // Pages enregistrées lues à l'octet près (jamais reformatées) ; sorties générées. Markdown non formaté : la prise en charge
+    // de Biome est récente et casse l'en-tête YAML des modèles d'issue.
+    "includes": ["**", "!test/fixtures", "!dist", "!.wrangler", "!node_modules", "!package-lock.json", "!**/*.md"]
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineWidth": 120,
+    "lineEnding": "lf"
+  },
+  "javascript": { "formatter": { "quoteStyle": "double", "semicolons": "always" } },
+  "assist": {
+    "actions": {
+      // Trier les imports changerait l'ordre d'évaluation des modules, dont dépendent les inscriptions `onInstance`.
+      "source": { "organizeImports": "off" }
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "preset": "recommended",
+      "style": {
+        // `!` marque un invariant que TypeScript ne voit pas (groupe de regex obligatoire, élément d'une liste fermée,
+        // binding vérifié par l'appelant) ; des gardes ajouteraient des branches mortes sur le chemin mesuré en CPU.
+        "noNonNullAssertion": "off"
+      }
+    }
+  }
+}

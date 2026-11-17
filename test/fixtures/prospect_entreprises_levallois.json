@@ -1,0 +1,188 @@
+{
+ "results": [
+  {
+   "siren": "503698664",
+   "nom_complet": "FONCIA TRANSACTION FRANCE",
+   "nom_raison_sociale": "FONCIA TRANSACTION FRANCE",
+   "nombre_etablissements": 693,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "50369866402348",
+     "etat_administratif": "F",
+     "code_postal": "92300",
+     "adresse": "53 RUE DU PDT WILSON 92300 LEVALLOIS PERRET",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.892368654",
+     "longitude": "2.2899958112",
+     "est_siege": false,
+     "activite_principale": "68.31Z"
+    }
+   ]
+  },
+  {
+   "siren": "397657941",
+   "nom_complet": "CONSULTANTS IMMOBILIER (CIMMONEUF)",
+   "nom_raison_sociale": "CONSULTANTS IMMOBILIER",
+   "nombre_etablissements": 29,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "39765794100084",
+     "etat_administratif": "A",
+     "code_postal": "92300",
+     "adresse": "77 RUE VOLTAIRE 92300 LEVALLOIS-PERRET",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.8937744388975",
+     "longitude": "2.28835221921354",
+     "est_siege": false,
+     "activite_principale": "68.31Z"
+    }
+   ]
+  },
+  {
+   "siren": "882080054",
+   "nom_complet": "ALEPH TRANSACTIONS",
+   "nom_raison_sociale": "ALEPH TRANSACTIONS",
+   "nombre_etablissements": 13,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "88208005400142",
+     "etat_administratif": "A",
+     "code_postal": "92300",
+     "adresse": "19 RUE LOUISE MICHEL 92300 LEVALLOIS-PERRET",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.8881789746075",
+     "longitude": "2.28596266071702",
+     "est_siege": true,
+     "activite_principale": "68.31Z"
+    }
+   ]
+  },
+  {
+   "siren": "443350426",
+   "nom_complet": "IMAX",
+   "nom_raison_sociale": "IMAX",
+   "nombre_etablissements": 8,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "44335042600021",
+     "etat_administratif": "A",
+     "code_postal": "92300",
+     "adresse": "34 RUE TREBOIS 92300 LEVALLOIS-PERRET",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.891680209",
+     "longitude": "2.2894637473",
+     "est_siege": true,
+     "activite_principale": "68.31Z"
+    }
+   ]
+  },
+  {
+   "siren": "812721173",
+   "nom_complet": "DEBORAH SEBAG (OHANA)",
+   "nom_raison_sociale": null,
+   "nombre_etablissements": 4,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "81272117300019",
+     "etat_administratif": "F",
+     "code_postal": "92300",
+     "adresse": "132 RUE MARIUS AUFAN 92300 LEVALLOIS-PERRET",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.895189408",
+     "longitude": "2.2807302123",
+     "est_siege": false,
+     "activite_principale": "68.20A"
+    }
+   ]
+  },
+  {
+   "siren": "402703706",
+   "nom_complet": "ALICE CHAFFARD",
+   "nom_raison_sociale": null,
+   "nombre_etablissements": 6,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "40270370600026",
+     "etat_administratif": "F",
+     "code_postal": "92300",
+     "adresse": "90 RUE MARIUS AUFAN 92300 LEVALLOIS-PERRET",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.892338535",
+     "longitude": "2.2831291038",
+     "est_siege": false,
+     "activite_principale": "72.1Z"
+    }
+   ]
+  },
+  {
+   "siren": "419314968",
+   "nom_complet": "BML CONSEIL IMMOBILIER",
+   "nom_raison_sociale": "BML CONSEIL IMMOBILIER",
+   "nombre_etablissements": 3,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "41931496800019",
+     "etat_administratif": "F",
+     "code_postal": "92300",
+     "adresse": "35 RUE PIERRE BROSSOLETTE 92300 LEVALLOIS-PERRET",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.896114332",
+     "longitude": "2.2939479942",
+     "est_siege": false,
+     "activite_principale": "68.31Z"
+    }
+   ]
+  },
+  {
+   "siren": "920497286",
+   "nom_complet": "T.S.G IMMOBILIER",
+   "nom_raison_sociale": "T.S.G IMMOBILIER",
+   "nombre_etablissements": 3,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "92049728600038",
+     "etat_administratif": "A",
+     "code_postal": "92300",
+     "adresse": "52 RUE CARNOT 92300 LEVALLOIS-PERRET",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.8919868497394",
+     "longitude": "2.28658470133576",
+     "est_siege": false,
+     "activite_principale": "68.31Z"
+    },
+    {
+     "siret": "92049728600020",
+     "etat_administratif": "F",
+     "code_postal": "92300",
+     "adresse": "59 RUE LOUISE MICHEL 92300 LEVALLOIS-PERRET",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.8897015026976",
+     "longitude": "2.28943312821755",
+     "est_siege": false,
+     "activite_principale": "68.31Z"
+    }
+   ]
+  }
+ ],
+ "total_results": 466,
+ "page": 1,
+ "per_page": 25,
+ "total_pages": 19
+}

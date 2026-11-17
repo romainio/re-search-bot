@@ -1,0 +1,81 @@
+{
+  "version": 0.6,
+  "generator": "Overpass API 0.7.62.11 87bfad18",
+  "osm3s": {
+    "timestamp_osm_base": "2026-11-09T13:30:04Z",
+    "copyright": "The data included in this document is from www.openstreetmap.org. The data is made available under ODbL."
+  },
+  "elements": [
+
+{
+  "type": "node",
+  "id": 2823186501,
+  "lat": 48.8801150,
+  "lon": 2.2869950,
+  "tags": {
+    "name": "Korn",
+    "office": "estate_agent",
+    "shop": "estate_agent"
+  }
+},
+{
+  "type": "node",
+  "id": 9122381389,
+  "lat": 48.8817152,
+  "lon": 2.3238509,
+  "tags": {
+    "email": "contact@clap-immo.fr",
+    "name": "Clap'Immo",
+    "opening_hours": "Mo-Fr 09:00-18:30, Sa-Su \"sur RDV\"",
+    "phone": "+33 1 73 43 07 70",
+    "shop": "estate_agent",
+    "website": "http://www.clap-immo.fr"
+  }
+},
+{
+  "type": "node",
+  "id": 9819127619,
+  "lat": 48.8764073,
+  "lon": 2.2902809,
+  "tags": {
+    "contact:city": "Paris",
+    "contact:housenumber": "5",
+    "contact:postcode": "75017",
+    "contact:street": "Rue Des Acacias",
+    "name": "Brauman & K",
+    "shop": "estate_agent"
+  }
+},
+{
+  "type": "node",
+  "id": 9917046943,
+  "lat": 48.8780177,
+  "lon": 2.3295702,
+  "tags": {
+    "name": "LotCent",
+    "shop": "estate_agent"
+  }
+},
+{
+  "type": "node",
+  "id": 9976486454,
+  "lat": 48.8765330,
+  "lon": 2.3022509,
+  "tags": {
+    "check_date": "2026-11-06",
+    "name": "Paris Promo",
+    "shop": "estate_agent"
+  }
+},
+{
+  "type": "node",
+  "id": 14211981603,
+  "lat": 48.8705457,
+  "lon": 2.2817106,
+  "tags": {
+    "shop": "estate_agent"
+  }
+}
+
+  ]
+}

@@ -1,0 +1,157 @@
+{
+  "$schema": "../instance.schema.json",
+  "zones": [
+    {
+      "postalCode": "44000",
+      "label": "Nantes",
+      "town": "\\bnantes\\b",
+      "bbox": [47.205, -1.585, 47.235, -1.53]
+    },
+    {
+      "postalCode": "44100",
+      "label": "Nantes Ouest",
+      "bbox": [47.19, -1.64, 47.235, -1.575]
+    },
+    {
+      "postalCode": "44200",
+      "label": "Île de Nantes",
+      "bbox": [47.18, -1.58, 47.21, -1.51]
+    },
+    {
+      "postalCode": "44300",
+      "label": "Nantes Nord-Est",
+      "bbox": [47.225, -1.6, 47.296, -1.48]
+    }
+  ],
+  "outOfZoneTowns": [
+    {
+      "postalCode": "44230",
+      "town": "\\bsaint[\\s-]+s[ée]bastien[\\s-]+sur[\\s-]+loire\\b"
+    },
+    {
+      "postalCode": "44980",
+      "town": "\\bsainte[\\s-]+luce[\\s-]+sur[\\s-]+loire\\b"
+    },
+    {
+      "postalCode": "44240",
+      "town": "\\bla\\s+chapelle[\\s-]+sur[\\s-]+erdre\\b"
+    },
+    {
+      "postalCode": "44800",
+      "town": "\\bsaint[\\s-]+herblain\\b"
+    },
+    {
+      "postalCode": "44400",
+      "town": "\\brez[ée]\\b"
+    },
+    {
+      "postalCode": "44700",
+      "town": "\\borvault\\b"
+    },
+    {
+      "postalCode": "44470",
+      "town": "\\bcarquefou\\b"
+    },
+    {
+      "postalCode": "44120",
+      "town": "\\bvertou\\b"
+    },
+    {
+      "postalCode": "44340",
+      "town": "\\bbouguenais\\b"
+    }
+  ],
+  "neighborhoodKeywords": [],
+  "criteria": {
+    "rentMin": 600,
+    "rentMax": 1000,
+    "surfaceMin": 35,
+    "roomsMin": 2,
+    "excludeGroundFloor": true
+  },
+  "sources": [
+    {
+      "id": "bienici",
+      "name": "Bien'ici",
+      "url": "https://www.bienici.com/realEstateAds.json?filters=%7B%22size%22%3A100%2C%22from%22%3A0%2C%22showAllModels%22%3Afalse%2C%22filterType%22%3A%22rent%22%2C%22propertyType%22%3A%5B%22flat%22%5D%2C%22minPrice%22%3A500%2C%22maxPrice%22%3A1100%2C%22page%22%3A1%2C%22sortBy%22%3A%22publicationDate%22%2C%22sortOrder%22%3A%22desc%22%2C%22onTheMarket%22%3A%5Btrue%5D%2C%22zoneIdsByTypes%22%3A%7B%22zoneIds%22%3A%5B%22-59874%22%5D%7D%7D",
+      "parser": "bienici",
+      "zones": ["44000", "44100", "44200", "44300"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "orpi_nantes",
+      "name": "Orpi Nantes",
+      "url": "https://www.orpi.com/recherche/rent?realEstateTypes%5B0%5D=appartement&locations%5B0%5D%5Bvalue%5D=nantes&locations%5B0%5D%5Blabel%5D=Nantes&sort=date-down&layoutType=mixte",
+      "parser": "orpi",
+      "zones": ["44000", "44100", "44200", "44300"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "foncia_nantes",
+      "name": "Foncia Nantes",
+      "url": "https://fr.foncia.com/location/nantes-44000/appartement",
+      "parser": "foncia",
+      "zones": ["44000", "44100", "44200", "44300"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "laforet_loire_atlantique",
+      "name": "Laforêt Loire-Atlantique",
+      "url": "https://www.laforet.com/ville/location-appartement-nantes-44000",
+      "parser": "laforet",
+      "zones": ["44000", "44100", "44200", "44300"],
+      "filteredToZones": false,
+      "phone": null,
+      "stopMarker": "id=\"nearest--area--",
+      "note": "La page de la ville redirige vers celle du département : le filtre par code postal écarte les autres communes."
+    },
+    {
+      "id": "ca_immo_nantes",
+      "name": "Crédit Agricole Immobilier",
+      "url": "https://www.ca-immobilier.fr/louer/location/appartement/44109/Nantes",
+      "parser": "caimmo",
+      "zones": ["44000", "44100", "44200", "44300"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "era_44000",
+      "name": "ERA 44000",
+      "url": "https://api.eraimmobilier.com/api/v2/annonces/search?page=1&type_annonce=location&per_page=50&order_dir=desc&statut=0,1,11&type_bien=appartement&code_postal=44000",
+      "parser": "era",
+      "zones": ["44000"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "era_44100",
+      "name": "ERA 44100",
+      "url": "https://api.eraimmobilier.com/api/v2/annonces/search?page=1&type_annonce=location&per_page=50&order_dir=desc&statut=0,1,11&type_bien=appartement&code_postal=44100",
+      "parser": "era",
+      "zones": ["44100"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "era_44200",
+      "name": "ERA 44200",
+      "url": "https://api.eraimmobilier.com/api/v2/annonces/search?page=1&type_annonce=location&per_page=50&order_dir=desc&statut=0,1,11&type_bien=appartement&code_postal=44200",
+      "parser": "era",
+      "zones": ["44200"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "era_44300",
+      "name": "ERA 44300",
+      "url": "https://api.eraimmobilier.com/api/v2/annonces/search?page=1&type_annonce=location&per_page=50&order_dir=desc&statut=0,1,11&type_bien=appartement&code_postal=44300",
+      "parser": "era",
+      "zones": ["44300"],
+      "filteredToZones": true,
+      "phone": null
+    }
+  ]
+}

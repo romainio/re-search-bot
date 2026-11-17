@@ -1,0 +1,232 @@
+{
+ "results": [
+  {
+   "siren": "503698664",
+   "nom_complet": "FONCIA TRANSACTION FRANCE",
+   "nom_raison_sociale": "FONCIA TRANSACTION FRANCE",
+   "nombre_etablissements": 693,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "50369866404815",
+     "etat_administratif": "A",
+     "code_postal": "75017",
+     "adresse": "76 RUE DE LEVIS 75017 PARIS",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.884431961",
+     "longitude": "2.3124777114",
+     "est_siege": false,
+     "activite_principale": "68.31Z"
+    }
+   ]
+  },
+  {
+   "siren": "329570857",
+   "nom_complet": "BNP PARIBAS REAL ESTATE ADVISORY FRANCE (BNPPRE ADVISORY FRANCE)",
+   "nom_raison_sociale": "BNP PARIBAS REAL ESTATE ADVISORY FRANCE",
+   "nombre_etablissements": 70,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "32957085700659",
+     "etat_administratif": "F",
+     "code_postal": "75017",
+     "adresse": "13 BOULEVARD DU FORT DE VAUX 75017 PARIS",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.892716895",
+     "longitude": "2.3033979139",
+     "est_siege": false,
+     "activite_principale": "68.31Z"
+    }
+   ]
+  },
+  {
+   "siren": "852339589",
+   "nom_complet": "DANIEL FEAU CONSEIL IMMOBILIER",
+   "nom_raison_sociale": "DANIEL FEAU CONSEIL IMMOBILIER",
+   "nombre_etablissements": 24,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "85233958900099",
+     "etat_administratif": "A",
+     "code_postal": "75017",
+     "adresse": "33 AVENUE DE VILLIERS 75017 PARIS",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.882824833",
+     "longitude": "2.3087257826",
+     "est_siege": false,
+     "activite_principale": "68.31Z"
+    },
+    {
+     "siret": "85233958900156",
+     "etat_administratif": "A",
+     "code_postal": "75017",
+     "adresse": "62 AVENUE DES TERNES 75017 PARIS",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.879392623",
+     "longitude": "2.291742147",
+     "est_siege": false,
+     "activite_principale": "68.31Z"
+    }
+   ]
+  },
+  {
+   "siren": "414057992",
+   "nom_complet": "BARNES",
+   "nom_raison_sociale": "BARNES",
+   "nombre_etablissements": 42,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "41405799200276",
+     "etat_administratif": "A",
+     "code_postal": "75017",
+     "adresse": "108 BOULEVARD DE COURCELLES 75017 PARIS",
+     "liste_enseignes": null,
+     "nom_commercial": "BARNES",
+     "latitude": "48.878938925",
+     "longitude": "2.3013107112",
+     "est_siege": false,
+     "activite_principale": "68.31Z"
+    },
+    {
+     "siret": "41405799200011",
+     "etat_administratif": "F",
+     "code_postal": "75017",
+     "adresse": "67 RUE DE SAUSSURE 75017 PARIS",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.886032981",
+     "longitude": "2.3141920267",
+     "est_siege": false,
+     "activite_principale": "74.1G"
+    },
+    {
+     "siret": "41405799200029",
+     "etat_administratif": "F",
+     "code_postal": "75017",
+     "adresse": "3 RUE DES MOINES 75017 PARIS",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.887510522",
+     "longitude": "2.3180079644",
+     "est_siege": false,
+     "activite_principale": "74.1G"
+    },
+    {
+     "siret": "41405799200037",
+     "etat_administratif": "F",
+     "code_postal": "75017",
+     "adresse": "25 RUE DE LA JONQUIERE 75017 PARIS",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.893486227",
+     "longitude": "2.3249346861",
+     "est_siege": false,
+     "activite_principale": "74.1G"
+    },
+    {
+     "siret": "41405799200052",
+     "etat_administratif": "F",
+     "code_postal": "75017",
+     "adresse": "5 AVENUE DE VILLIERS 75017 PARIS",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.881581467",
+     "longitude": "2.3145852743",
+     "est_siege": false,
+     "activite_principale": "74.1G"
+    },
+    {
+     "siret": "41405799200102",
+     "etat_administratif": "F",
+     "code_postal": "75017",
+     "adresse": "20 BOULEVARD DE COURCELLES 75017 PARIS",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.881245574",
+     "longitude": "2.3134096514",
+     "est_siege": false,
+     "activite_principale": "74.1G"
+    }
+   ]
+  },
+  {
+   "siren": "397657941",
+   "nom_complet": "CONSULTANTS IMMOBILIER (CIMMONEUF)",
+   "nom_raison_sociale": "CONSULTANTS IMMOBILIER",
+   "nombre_etablissements": 29,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "39765794100027",
+     "etat_administratif": "A",
+     "code_postal": "75017",
+     "adresse": "54 RUE JOUFFROY D'ABBANS 75017 PARIS",
+     "liste_enseignes": [
+      "HOTELS PARTICULIERS"
+     ],
+     "nom_commercial": "CIMMONEUF",
+     "latitude": "48.884964613",
+     "longitude": "2.3065945824",
+     "est_siege": true,
+     "activite_principale": "68.31Z"
+    },
+    {
+     "siret": "39765794100225",
+     "etat_administratif": "A",
+     "code_postal": "75017",
+     "adresse": "PLACE DU NICARAGUA 54 RUE JOUFFROY D'ABBANS 75017 PARIS",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.884964613",
+     "longitude": "2.3065945824",
+     "est_siege": false,
+     "activite_principale": "68.31Z"
+    },
+    {
+     "siret": "39765794100282",
+     "etat_administratif": "A",
+     "code_postal": "75017",
+     "adresse": "99 RUE DE COURCELLES 75017 PARIS",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.8810418154813",
+     "longitude": "2.30104370152572",
+     "est_siege": false,
+     "activite_principale": "68.31Z"
+    }
+   ]
+  },
+  {
+   "siren": "419692389",
+   "nom_complet": "BRETEUIL ILE DE FRANCE",
+   "nom_raison_sociale": "BRETEUIL ILE DE FRANCE",
+   "nombre_etablissements": 24,
+   "etat_administratif": "A",
+   "matching_etablissements": [
+    {
+     "siret": "41969238900143",
+     "etat_administratif": "A",
+     "code_postal": "75017",
+     "adresse": "34 AVENUE NIEL 75017 PARIS",
+     "liste_enseignes": null,
+     "nom_commercial": null,
+     "latitude": "48.881574844",
+     "longitude": "2.2959314266",
+     "est_siege": false,
+     "activite_principale": "68.31Z"
+    }
+   ]
+  }
+ ],
+ "total_results": 1910,
+ "page": 1,
+ "per_page": 25,
+ "total_pages": 77
+}

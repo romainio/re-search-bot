@@ -1,0 +1,45 @@
+{
+  "name": "re-search",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Alertes Telegram de locations nouvelles, pour toute ville de France, sur le plan gratuit de Cloudflare · Telegram alerts for new rental listings in any French city, on the Cloudflare free plan",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romainio/re-search-bot.git"
+  },
+  "homepage": "https://github.com/romainio/re-search-bot#readme",
+  "keywords": [
+    "cloudflare-workers",
+    "telegram-bot",
+    "real-estate",
+    "rental",
+    "france",
+    "mcp"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:cpu": "vitest run --config vitest.cpu.config.ts",
+    "lint": "biome check .",
+    "format": "biome format --write ."
+  },
+  "dependencies": {
+    "postal-mime": "^4.2.0"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.6.4",
+    "@cloudflare/vitest-plugin": "^1.4.5",
+    "@cloudflare/workers-types": "^5.20261019.1",
+    "@types/node": "^26.6.5",
+    "typescript": "^7.0.2",
+    "vitest": "^5.0.5",
+    "wrangler": "^4.151.2"
+  }
+}

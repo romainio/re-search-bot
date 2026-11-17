@@ -1,0 +1,596 @@
+{
+  "$schema": "../instance.schema.json",
+  "zones": [
+    { "postalCode": "75017", "label": "Paris 17", "bbox": [48.8765, 2.268, 48.896, 2.333] },
+    { "postalCode": "92300", "label": "Levallois", "town": "\\blevallois\\b", "bbox": [48.884, 2.268, 48.91, 2.3] }
+  ],
+  "outOfZoneTowns": [
+    { "postalCode": "92250", "town": "\\bla\\s+garenne[\\s-]+colombes\\b" },
+    { "postalCode": "92270", "town": "\\bbois[\\s-]+colombes\\b" },
+    { "postalCode": "92200", "town": "\\bneuilly\\b" },
+    { "postalCode": "92110", "town": "(?<!batignolles[\\s-]*)\\bclichy\\b(?![\\s-]*batignolles)" },
+    { "postalCode": "92400", "town": "\\bcourbevoie\\b" },
+    { "postalCode": "92700", "town": "\\bcolombes\\b" },
+    { "postalCode": "92800", "town": "\\bputeaux\\b" },
+    { "postalCode": "92100", "town": "\\bboulogne\\b" },
+    { "postalCode": "92600", "town": "\\basni[eè]res\\b" },
+    { "postalCode": "93400", "town": "\\bsaint[\\s-]+ouen\\b" },
+    { "postalCode": "92150", "town": "\\bsuresnes\\b" },
+    { "postalCode": "92130", "town": "\\bissy[\\s-]+les[\\s-]+moulineaux\\b" },
+    { "postalCode": "92000", "town": "\\bnanterre\\b" }
+  ],
+  "neighborhoodKeywords": [
+    "Batignolles",
+    "Cardinet",
+    "Brochant",
+    "Dames",
+    "Moines",
+    "Legendre",
+    "Lemercier",
+    "Davy",
+    "Guy Môquet",
+    "Pereire",
+    "Martin Luther King",
+    "Clichy-Batignolles",
+    "Lobligeois",
+    "Truffaut",
+    "Nollet",
+    "Boursault",
+    "La Condamine"
+  ],
+  "neighborhoodLabel": "Batignolles",
+  "keywordsZone": "75017",
+  "criteria": { "rentMin": 1000, "rentMax": 1600, "surfaceMin": 35, "roomsMin": 2, "excludeGroundFloor": true },
+  "window": { "startHour": 9, "endHour": 20, "summaryHour": 20, "summaryMinute": 5 },
+  "photoCriteria": [
+    { "id": "parquet", "question": "le sol visible est du parquet", "emoji": "🪵", "label": "Parquet" },
+    { "id": "carrelage", "question": "le sol visible est du carrelage", "emoji": "🔲", "label": "Carrelage" },
+    { "id": "moquette", "question": "le sol visible est de la moquette", "emoji": "🧶", "label": "Moquette" },
+    {
+      "id": "stratifie",
+      "question": "le sol visible est du stratifié ou du vinyle imitation bois",
+      "emoji": "📏",
+      "label": "Stratifié"
+    },
+    {
+      "id": "cuisine_equipee",
+      "question": "la cuisine est équipée (plaques, évier, meubles, électroménager visible)",
+      "emoji": "🍳",
+      "label": "Cuisine équipée",
+      "showNo": true
+    },
+    {
+      "id": "cuisine_recente",
+      "question": "la cuisine paraît récente ou rénovée",
+      "emoji": "✨",
+      "label": "récente",
+      "parent": "cuisine_equipee"
+    },
+    { "id": "baignoire", "question": "une baignoire est visible", "emoji": "🛁", "label": "Baignoire", "showNo": true },
+    { "id": "douche", "question": "une douche est visible", "emoji": "🚿", "label": "Douche" },
+    {
+      "id": "luminosite",
+      "question": "le logement paraît lumineux (grandes fenêtres, lumière naturelle)",
+      "emoji": "☀️",
+      "label": "Lumineux",
+      "showNo": true
+    },
+    {
+      "id": "exterieur",
+      "question": "un balcon, une terrasse ou un extérieur est visible",
+      "emoji": "🌿",
+      "label": "Balcon/extérieur"
+    }
+  ],
+  "ai": {
+    "dailyNeurons": 8000,
+    "featureCaps": {
+      "photo": 4000,
+      "prospect": 500,
+      "embed": 1000,
+      "profile": 400,
+      "universal": 4000,
+      "mail": 1000,
+      "assistant": 1500
+    }
+  },
+  "geo": { "stationPostalCodes": ["75017", "92300"], "rentCapPostalCodes": ["75017"] },
+  "sources": [
+    {
+      "id": "bienici",
+      "name": "Bien'ici",
+      "url": "https://www.bienici.com/realEstateAds.json?filters=%7B%22size%22%3A100%2C%22from%22%3A0%2C%22showAllModels%22%3Afalse%2C%22filterType%22%3A%22rent%22%2C%22propertyType%22%3A%5B%22flat%22%5D%2C%22minPrice%22%3A900%2C%22maxPrice%22%3A1700%2C%22page%22%3A1%2C%22sortBy%22%3A%22publicationDate%22%2C%22sortOrder%22%3A%22desc%22%2C%22onTheMarket%22%3A%5Btrue%5D%2C%22zoneIdsByTypes%22%3A%7B%22zoneIds%22%3A%5B%22-9519%22%2C%22-86985%22%5D%7D%7D",
+      "parser": "bienici",
+      "group": 0,
+      "zones": ["75017", "92300"],
+      "filteredToZones": true,
+      "phone": null,
+      "note": "Une requête pour les deux zones : zoneIds -9519 = Paris 17e, -86985 = Levallois-Perret."
+    },
+    {
+      "id": "orpi_17",
+      "name": "Orpi Paris 17",
+      "url": "https://www.orpi.com/recherche/rent?realEstateTypes%5B0%5D=appartement&locations%5B0%5D%5Bvalue%5D=paris-17&locations%5B0%5D%5Blabel%5D=Paris%2017&sort=date-down&layoutType=mixte",
+      "parser": "orpi",
+      "group": 1,
+      "zones": ["75017"],
+      "filteredToZones": true,
+      "phone": "01 40 25 02 32"
+    },
+    {
+      "id": "foncia_17",
+      "name": "Foncia",
+      "url": "https://fr.foncia.com/location/paris-75017/appartement",
+      "parser": "foncia",
+      "group": 0,
+      "zones": ["75017"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "etude_wagram",
+      "name": "Etude Wagram",
+      "url": "https://www.etude-wagram.com/location/1-paris/17-paris-17eme-arrondissement/appartement/1",
+      "parser": "lbi",
+      "group": 2,
+      "zones": ["75017"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "cmb",
+      "name": "CMB Art'Immo",
+      "url": "https://www.cmb-artimmo.com/location/1",
+      "parser": "lbi",
+      "group": 4,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "01 58 05 36 12",
+      "stopMarker": "</main>",
+      "note": "Lecture arrêtée à la fin de <main> (page lourde)."
+    },
+    {
+      "id": "agence_batignolles",
+      "name": "Agence des Batignolles",
+      "url": "https://ag-batignolles.la-boite-immo.com/location/1",
+      "parser": "lbi2",
+      "group": 3,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "01 44 90 03 94"
+    },
+    {
+      "id": "spr",
+      "name": "SPR Immobilier",
+      "url": "https://www.spr-immobilier.fr/a-louer/1",
+      "parser": "lbi2",
+      "group": 1,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "01 40 25 96 60"
+    },
+    {
+      "id": "armaille",
+      "name": "Armaillé Immobilier",
+      "url": "https://www.armaille-immobilier.com/location/1",
+      "parser": "lbi2",
+      "group": 2,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "01 40 68 98 43"
+    },
+    {
+      "id": "odi",
+      "name": "ODI Immobilier",
+      "url": "https://www.odi-immobilier.com/location/1",
+      "parser": "lbi2",
+      "group": 4,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "01 46 47 60 60"
+    },
+    {
+      "id": "cmb_p2",
+      "name": "CMB Art'Immo",
+      "url": "https://www.cmb-artimmo.com/location/2",
+      "parser": "lbi",
+      "group": 4,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "01 58 05 36 12",
+      "stopMarker": "</main>",
+      "extraPage": true
+    },
+    {
+      "id": "fnaim_17",
+      "name": "FNAIM",
+      "url": "https://www.fnaim.fr/18-location.htm?localites=%5B%7B%22id%22%3A%226612%22%2C%22label%22%3A%22PARIS+17E+ARRONDISSEMENT+%2875017%29%22%2C%22type%22%3A%223%22%2C%22code%22%3A%2275017%22%2C%22insee%22%3A%2275117%22%2C%22value%22%3A%22PARIS+17E+ARRONDISSEMENT+%2875017%29%22%7D%5D&PRIX_MIN=900&PRIX_MAX=1700&TYPE%5B%5D=1&idtf=18&TRANSACTION=2&submit=Rechercher",
+      "parser": "fnaim",
+      "group": 0,
+      "zones": ["75017"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "nestenn_17",
+      "name": "Nestenn Paris 17 Batignolles",
+      "url": "https://immobilier-paris-17.nestenn.com/louer",
+      "parser": "nestenn",
+      "group": 2,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "01 47 70 96 17"
+    },
+    {
+      "id": "sector",
+      "name": "Sector Immobilier",
+      "url": "https://www.sectorimmobilier.fr/a-louer/1",
+      "parser": "lbi2",
+      "group": 0,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "01 42 29 29 00"
+    },
+    {
+      "id": "azoulay",
+      "name": "Cabinet Azoulay",
+      "url": "https://www.azoulay.net/location/1",
+      "parser": "lbi2",
+      "group": 4,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "01 55 42 77 71"
+    },
+    {
+      "id": "equinimo",
+      "name": "Equinimo",
+      "url": "https://www.equinimo.fr/location/1",
+      "parser": "lbi",
+      "group": 4,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "01 84 20 40 37"
+    },
+    {
+      "id": "feau_17",
+      "name": "Daniel Féau Paris 17",
+      "url": "https://danielfeau.com/fr/listing/france/location/paris/paris-17eme",
+      "parser": "apimo",
+      "group": 3,
+      "zones": ["75017"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "domiere",
+      "name": "Domiere",
+      "url": "https://www.domiere.com/location",
+      "parser": "netty",
+      "group": 3,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "+33 1 45 74 08 08"
+    },
+    {
+      "id": "laforet_17",
+      "name": "Laforêt Paris 17",
+      "url": "https://www.laforet.com/ville/location-appartement-paris-75017",
+      "parser": "laforet",
+      "group": 0,
+      "zones": ["75017"],
+      "filteredToZones": true,
+      "phone": null,
+      "stopMarker": "id=\"nearest--area--",
+      "note": "Page lourde (1,2 Mo) : lecture arrêtée à la section « à proximité »."
+    },
+    {
+      "id": "orpi_levallois",
+      "name": "Orpi Levallois-Perret",
+      "url": "https://www.orpi.com/recherche/rent?realEstateTypes%5B0%5D=appartement&locations%5B0%5D%5Bvalue%5D=levallois-perret&locations%5B0%5D%5Blabel%5D=Levallois-Perret&sort=date-down&layoutType=mixte",
+      "parser": "orpi",
+      "group": 1,
+      "zones": ["92300"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "nestenn_courbevoie",
+      "name": "Nestenn Courbevoie",
+      "url": "https://immobilier-courbevoie.nestenn.com/louer",
+      "parser": "nestenn",
+      "group": 1,
+      "zones": ["92300"],
+      "filteredToZones": false,
+      "phone": "01 49 97 33 33"
+    },
+    {
+      "id": "century21_levallois",
+      "name": "Century 21",
+      "url": "https://www.century21.fr/annonces/location-appartement/v-levallois+perret/",
+      "parser": "century21",
+      "group": 2,
+      "zones": ["92300"],
+      "filteredToZones": true,
+      "phone": null,
+      "every": 15,
+      "active": false,
+      "note": "Désactivée le 09/11/2026 : HTTP 429 depuis le 07/11 même pour une requête isolée depuis Cloudflare (cadence de 15 min sans effet). Relais : alertes mail de Century 21 (docs/mail.md)."
+    },
+    {
+      "id": "foncia_levallois",
+      "name": "Foncia Levallois",
+      "url": "https://fr.foncia.com/location/levallois-perret-92300/appartement",
+      "parser": "foncia",
+      "group": 3,
+      "zones": ["92300"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "fnaim_levallois",
+      "name": "FNAIM Levallois",
+      "url": "https://www.fnaim.fr/18-location.htm?localites=%5B%7B%22id%22%3A%2238051%22%2C%22label%22%3A%22LEVALLOIS+PERRET+%2892300%29%22%2C%22type%22%3A%223%22%2C%22code%22%3A%2292300%22%2C%22insee%22%3A%2292044%22%2C%22value%22%3A%22LEVALLOIS+PERRET+%2892300%29%22%7D%5D&PRIX_MIN=900&PRIX_MAX=1700&TYPE%5B%5D=1&idtf=18&TRANSACTION=2&submit=Rechercher",
+      "parser": "fnaim",
+      "group": 3,
+      "zones": ["92300"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "laforet_levallois",
+      "name": "Laforêt Levallois-Perret",
+      "url": "https://www.laforet.com/ville/location-appartement-levallois-perret-92300",
+      "parser": "laforet",
+      "group": 0,
+      "zones": ["92300"],
+      "filteredToZones": true,
+      "phone": null,
+      "stopMarker": "id=\"nearest--area--"
+    },
+    {
+      "id": "impact",
+      "name": "Impact Immo",
+      "url": "https://impact-immo.com/fr/locations",
+      "parser": "apimo",
+      "group": 1,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "01 75 61 42 00"
+    },
+    {
+      "id": "connexion",
+      "name": "Connexion Immobilier",
+      "url": "https://connexion.immo/fr/locations-paris",
+      "parser": "apimo",
+      "group": 4,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "+33 1 40 54 29 80"
+    },
+    {
+      "id": "aream",
+      "name": "Aream",
+      "url": "https://aream.fr/fr/locations",
+      "parser": "apimo",
+      "group": 0,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "+33 1 58 36 36 58"
+    },
+    {
+      "id": "immediat",
+      "name": "Agence Immédiat",
+      "url": "https://www.agence-immediat.fr/location/1",
+      "parser": "lbi2",
+      "group": 3,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": null
+    },
+    {
+      "id": "sainte_aubane",
+      "name": "Sainte Aubane Immobilière",
+      "url": "https://www.sainteaubane.com/locations/1",
+      "parser": "lbi2",
+      "group": 2,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": null
+    },
+    {
+      "id": "century21_17",
+      "name": "Century 21 Paris 17",
+      "url": "https://www.century21.fr/annonces/location-appartement/cpv-75017_paris/",
+      "parser": "century21",
+      "group": 4,
+      "zones": ["75017"],
+      "filteredToZones": true,
+      "phone": null,
+      "every": 15,
+      "active": false,
+      "note": "Désactivée le 09/11/2026 : même blocage que century21_levallois (HTTP 429 depuis Cloudflare). Relais : alertes mail (docs/mail.md)."
+    },
+    {
+      "id": "oralia",
+      "name": "Oralia",
+      "url": "https://oralia.fr/location/nos-biens-a-louer/ile-de-france/paris-75/paris-75017",
+      "parser": "oralia",
+      "group": 1,
+      "zones": ["75017"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "elger",
+      "name": "Elger Immobilier",
+      "url": "https://www.elger-immobilier.com/fr/location-maison-appartement-paris/&new_research=1",
+      "parser": "osl",
+      "group": 1,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "+33 1 81 70 17 16"
+    },
+    {
+      "id": "fredelion",
+      "name": "Frédélion",
+      "url": "https://www.fredelion.com/fr/immobilier/location",
+      "parser": "billie",
+      "group": 5,
+      "zones": ["75017", "92300"],
+      "filteredToZones": false,
+      "phone": "01 83 64 23 24",
+      "stopMarker": "container-cta-purchase-project",
+      "note": "Réseau Billie.immo trié par prix décroissant : les loyers de la cible sont en page 2 (fredelion_p2)."
+    },
+    {
+      "id": "fredelion_p2",
+      "name": "Frédélion",
+      "url": "https://www.fredelion.com/fr/immobilier/location?page=2",
+      "parser": "billie",
+      "group": 6,
+      "zones": ["75017", "92300"],
+      "filteredToZones": false,
+      "phone": "01 83 64 23 24",
+      "extraPage": true
+    },
+    {
+      "id": "ca_immo_17",
+      "name": "Crédit Agricole Immobilier",
+      "url": "https://www.ca-immobilier.fr/louer/location/appartement/75117/Paris%2017e",
+      "parser": "caimmo",
+      "group": 5,
+      "zones": ["75017"],
+      "filteredToZones": true,
+      "phone": "05 34 40 17 98"
+    },
+    {
+      "id": "ca_immo_levallois",
+      "name": "Crédit Agricole Immobilier",
+      "url": "https://www.ca-immobilier.fr/louer/location/appartement/92044/Levallois-Perret",
+      "parser": "caimmo",
+      "group": 6,
+      "zones": ["92300"],
+      "filteredToZones": true,
+      "phone": "05 34 40 17 98"
+    },
+    {
+      "id": "era_17",
+      "name": "ERA Immobilier",
+      "url": "https://api.eraimmobilier.com/api/v2/annonces/search?page=1&type_annonce=location&per_page=50&order_dir=desc&statut=0,1,11&type_bien=appartement&code_postal=75017",
+      "parser": "era",
+      "group": 5,
+      "zones": ["75017"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "era_levallois",
+      "name": "ERA Immobilier",
+      "url": "https://api.eraimmobilier.com/api/v2/annonces/search?page=1&type_annonce=location&per_page=50&order_dir=desc&statut=0,1,11&type_bien=appartement&code_postal=92300",
+      "parser": "era",
+      "group": 6,
+      "zones": ["92300"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "imax_levallois",
+      "name": "Imax Levallois",
+      "url": "https://www.imax.fr/ville_bien/Levallois+Perret__1__Location/immobilier-levallois-perret.html",
+      "parser": "office5",
+      "group": 7,
+      "zones": ["92300"],
+      "filteredToZones": true,
+      "phone": "01 56 04 00 00",
+      "encoding": "windows-1252"
+    },
+    {
+      "id": "imax_paris",
+      "name": "Imax",
+      "url": "https://www.imax.fr/ville_bien/Paris__1__Location/immobilier-paris.html",
+      "parser": "office5",
+      "group": 8,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": "01 56 04 00 00",
+      "encoding": "windows-1252"
+    },
+    {
+      "id": "consultants",
+      "name": "Consultants Immobilier",
+      "url": "https://www.consultants-immobilier.com/nos-annonces/louer/?a=c_32566%2Cc_38340&t=appartement&pr=1700&srt=prix_asc",
+      "parser": "wpapimo",
+      "group": 7,
+      "zones": ["75017", "92300"],
+      "filteredToZones": true,
+      "phone": null
+    },
+    {
+      "id": "mister_property",
+      "name": "Mister Property",
+      "url": "https://www.mister-property.fr/annonces/transaction/Location.html",
+      "parser": "office5",
+      "group": 8,
+      "zones": ["92300"],
+      "filteredToZones": false,
+      "phone": null,
+      "encoding": "windows-1252"
+    },
+    {
+      "id": "agence_pereire",
+      "name": "F.G.D.I Pereire",
+      "url": "https://www.agencepereire.com/annonces/transaction/Location.html",
+      "parser": "office5",
+      "group": 8,
+      "zones": ["75017", "92300"],
+      "filteredToZones": false,
+      "phone": "01 44 09 92 17",
+      "encoding": "windows-1252"
+    },
+    {
+      "id": "safar",
+      "name": "Safar",
+      "url": "https://www.safar.fr/annonces/transaction/Location.html",
+      "parser": "office5",
+      "group": 9,
+      "zones": ["75017"],
+      "filteredToZones": false,
+      "phone": null,
+      "encoding": "windows-1252",
+      "stopMarker": "<div class=\"barre-navigation-bottom\">"
+    },
+    {
+      "id": "levimmo",
+      "name": "Levallois Immobilier",
+      "url": "https://www.levallois-immobilier.fr/location-appartement-levallois/&new_research=1",
+      "parser": "at1605",
+      "group": 9,
+      "zones": ["92300"],
+      "filteredToZones": false,
+      "phone": "01 40 89 07 07"
+    },
+    {
+      "id": "pni",
+      "name": "Paris Neuilly Immobilier",
+      "url": "https://www.parisneuillyimmobilier.com/louer.html",
+      "parser": "wpapimo",
+      "group": 9,
+      "zones": ["75017", "92300"],
+      "filteredToZones": false,
+      "phone": "01 40 55 07 77"
+    },
+    {
+      "id": "david_immo",
+      "name": "David Immo",
+      "url": "https://www.davidimmo.com/location/1/0",
+      "parser": "universal",
+      "group": 6,
+      "zones": ["75017", "92300"],
+      "filteredToZones": false,
+      "phone": "01 47 63 08 08",
+      "every": 30,
+      "active": false,
+      "note": "Source UNIVERSELLE d'exemple (docs/lecteur-universel.md), inactive : site maison sans lecteur dédié, lu par le lecteur universel (cadence imposée de 30 min, lue seulement avec UNIVERSAL_READER=\"true\" et active: true)."
+    }
+  ]
+}

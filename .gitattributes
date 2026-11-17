@@ -1,0 +1,5 @@
+# Fins de ligne LF partout, y compris sous Windows : le formateur (Biome) les exige.
+* text=auto eol=lf
+
+# Pages enregistrées lues à l'octet près (tailles mesurées par les tests du registre) : jamais de conversion CRLF.
+test/fixtures/** -text
